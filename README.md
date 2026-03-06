@@ -1,25 +1,27 @@
-# NanoStream PRSS (Python Radio Streaming Server)
+# Python Radio Server v2
 
-Features:
+Features
 - Multiple radio stations
-- Auto DJ playlists
-- Icecast streaming via FFmpeg
-- FastAPI dashboard
-- Discord song request bot (basic example)
+- Auto DJ streaming via FFmpeg + Icecast
+- Spotify-style web UI
+- Discord song request queue
+- Redis request queue
 - Listener analytics endpoint
 
-Requirements:
+Requirements
 - Python 3.10+
 - ffmpeg
 - icecast2
+- redis-server
 
-Install Python deps:
+Install dependencies:
 
-pip install fastapi uvicorn sqlalchemy python-socketio aiofiles discord.py mutagen redis requests
+pip install fastapi uvicorn redis requests discord.py python-multipart
 
-Run:
+Run services:
 
+redis-server
 uvicorn server.main:app --host 0.0.0.0 --port 9000
 
-Icecast default stream example:
-http://localhost:8000/lofi
+Open UI:
+http://localhost:9000

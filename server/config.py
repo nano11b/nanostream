@@ -1,5 +1,7 @@
 ICECAST_HOST = "localhost"
 ICECAST_PORT = 8000
-ICECAST_SOURCE_PASSWORD = "hackme"
+ICECAST_PASSWORD = "hackme"
 
 MUSIC_ROOT = "music"
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379

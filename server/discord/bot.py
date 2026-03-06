@@ -1,16 +1,28 @@
 import discord
+import redis
+from server.config import REDIS_HOST, REDIS_PORT
 
 TOKEN = "PUT_DISCORD_TOKEN_HERE"
 
-intents = discord.Intents.default()
-bot = discord.Bot(intents=intents)
+r = redis.Redis(host=REDIS_HOST,port=REDIS_PORT,decode_responses=True)
+
+bot = discord.Bot()
 
 @bot.slash_command(description="Request a song")
-async def request(ctx, song: str):
-    await ctx.respond(f"Song request received: {song}")
+async def request(ctx, path: str):
 
-@bot.slash_command(description="Now playing")
-async def nowplaying(ctx):
-    await ctx.respond("AutoDJ is currently playing music.")
+    r.rpush("song_requests",path)
+
+    await ctx.respond(f"Added to queue: {path}")
+
+@bot.slash_command(description="View queue")
+async def queue(ctx):
+
+    q = r.lrange("song_requests",0,-1)
+
+    if not q:
+        await ctx.respond("Queue empty")
+    else:
+        await ctx.respond("\n".join(q))
 
 bot.run(TOKEN)

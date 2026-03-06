@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Python Radio</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2>Stations</h2>
+<button onclick="play('lofi')">LoFi</button>
+<button onclick="play('rock')">Rock</button>
+</div>
+
+<div class="main">
+<h1>Python Radio</h1>
+
+<audio id="player" controls autoplay></audio>
+
+<h2>Song Requests</h2>
+<ul id="queue"></ul>
+
+</div>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
