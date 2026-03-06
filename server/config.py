@@ -1,0 +1,5 @@
+ICECAST_HOST = "localhost"
+ICECAST_PORT = 8000
+ICECAST_SOURCE_PASSWORD = "hackme"
+
+MUSIC_ROOT = "music"
